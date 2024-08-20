@@ -15,6 +15,9 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import emailjs from "emailjs-com";
 
+import SupportLogo from "../assets/SupportLogo.png";
+import SupportImg from "../assets/SupportImg.png";
+
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
@@ -65,12 +68,8 @@ export default function SignInSide() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url("/bg.webp")',
-            backgroundColor: (t) =>
-              t.palette.mode === "light"
-                ? t.palette.grey[50]
-                : t.palette.grey[900],
-            backgroundSize: "cover", // Cover the entire component
+            backgroundImage:`url(${SupportImg})`,
+            backgroundSize: "contain", // Cover the entire component
             backgroundPosition: "center", // Center the image
             backgroundRepeat: "no-repeat", // Prevent the image from repeating
           }}
@@ -79,16 +78,30 @@ export default function SignInSide() {
           <Box
             sx={{
               my: 8,
-              mx: 4,
+              mx: { xs: 4, lg: 8 },
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <QuizIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
+            <Box
+              sx={{
+                width: {xs: "30%", lg: "20%"},
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src={SupportLogo}
+                alt="Support Logo"
+                style={{
+                  maxWidth: "100%",
+                  height: "auto",
+                }}
+              />
+            </Box>
+            <Typography component="h1" variant="h5" align="center">
               Nexus AIOT Software Support
             </Typography>
             <form onSubmit={handleSubmit}>
@@ -102,7 +115,7 @@ export default function SignInSide() {
                 required
                 margin="normal"
               >
-                <MenuItem value="">Select an app</MenuItem>
+                {/* <MenuItem value="">Select an app</MenuItem> */}
                 <MenuItem value="I-Collect">I-Collect</MenuItem>
                 <MenuItem value="I-Collect_Contractor">
                   I-Collect-Contractor
